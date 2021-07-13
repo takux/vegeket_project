@@ -1,5 +1,7 @@
 # VegeKet
 
+## 全体構成図/tree
+
 ```
 vegeket
 ├── base
@@ -30,6 +32,9 @@ vegeket
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
+├── secrets
+│   ├── .env.dev
+│   └── .env.prod
 ├── static
 │   ├── items
 │   └── vegetables
@@ -66,6 +71,5 @@ vegeket
 │       ├── messages.html
 │       └── pagination.html
 ├── db.sqlite3
-├── manage.py
-└── secrets
+└── manage.py
 ```
