@@ -10,8 +10,8 @@ vegeket
 │   ├── apps.py
 │   ├── forms.py
 │   ├── migrations
-│   │   ├── 0001_initial.py
 │   │   ├── __init__.py
+│   │   └── 0001_initial.py
 │   ├── models
 │   │   ├── __init__.py
 │   │   ├── account_models.py
