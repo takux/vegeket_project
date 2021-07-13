@@ -1,4 +1,4 @@
-# django_ec_test
+# VegeKet
 
 ```
 vegeket
