@@ -1,0 +1,5 @@
+.DS_Store
+venv/
+secrets/
+base/migrations/
+db.sqlite3
