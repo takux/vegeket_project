@@ -29,7 +29,8 @@ class Category(models.Model):
 
 
 class Item(models.Model):
-    id = models.CharField(default=create_id, primary_key=True, max_length=22)
+    id = models.CharField(default=create_id, primary_key=True,
+                          max_length=22, editable=False)
     name = models.CharField(default='', max_length=50)
     price = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
