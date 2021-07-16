@@ -1,8 +1,8 @@
 .DS_Store
 venv/
 secrets/
+base/models/__pycache__/
 base/migrations/00*.py
 base/migrations/__pycache__/
 base/__pycache__/
 db.sqlite3
-/**/__pycache__/
