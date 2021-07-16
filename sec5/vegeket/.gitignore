@@ -1,6 +1,7 @@
 .DS_Store
 venv/
 secrets/
+config/__pycache__/
 base/models/__pycache__/
 base/migrations/00*.py
 base/migrations/__pycache__/
