@@ -2,5 +2,6 @@
 venv/
 secrets/
 base/migrations/
+!base/migrations/__init__.py
 base/__pycache__/
 db.sqlite3
