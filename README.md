@@ -25,7 +25,7 @@ vegeket
 │       ├── item_views.py
 │       ├── order_views.py
 │       └── pay_views.py
-├── conf
+├── config
 │   ├── __init__.py
 │   ├── asgi.py
 │   ├── custom_context_processors.py
