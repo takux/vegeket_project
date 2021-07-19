@@ -26,17 +26,16 @@
                         <td>{{object.price}}</td>
                         <td>{{object.quantity}}</td>
                         <td>{{object.subtotal}}</td>
-                        <td><a href="/cart/delete/{{object.pk}}/" class="my-auto btn btn-danger btn-sm">削除</a></td>
+                        <td><a href="/cart/remove/{{object.pk}}/" class="my-auto btn btn-danger btn-sm">削除</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
             <p class="lead text-right">小計 - ¥{{total}}</p>
             <p class="lead text-right">税込計 - ¥{{tax_included_total}}</p>
-            <form action="/pay/checkout/" method="POST" class="text-right">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-info">Checkout</button>
-            </form>
+
+            <!-- Checkoutボタンをここに追記すること -->
+
             {% else %}
             <p class="">ショッピングカートにアイテムがありません。</p>
             {% endif %}

@@ -39,24 +39,22 @@ class CartListView(ListView):
 
 
 class AddCartView(View):
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         item_pk = request.POST.get('item_pk')
         quantity = int(request.POST.get('quantity'))
         cart = request.session.get('cart', None)
         if cart is None or len(cart) == 0:
             items = OrderedDict()
             cart = {'items': items}
-
         if item_pk in cart['items']:
             cart['items'][item_pk] += quantity
         else:
             cart['items'][item_pk] = quantity
-
         request.session['cart'] = cart
         return redirect('/cart/')
 
 
-def delete_cart(request, pk):
+def remove_from_cart(request, pk):
     cart = request.session.get('cart', None)
     if cart is not None:
         del cart['items'][pk]

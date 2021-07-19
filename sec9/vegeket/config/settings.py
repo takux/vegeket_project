@@ -134,3 +134,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',  # 追記
 ]
+
+
+# 消費税率
+TAX_RATE = 0.1
