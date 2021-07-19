@@ -22,6 +22,22 @@
                 </p>
                 <p class="lead">¥{{object.price}}（税別）</p>
                 <p class="lead">{{object.description}}</p>
+
+                <form action="/cart/add/" method="POST" class="">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="item_pk" value="{{object.pk}}">
+
+                    <p>
+                        <input type="number" class="form-control d-inline w-25" name="quantity" value="1"> 点
+                    </p>
+                    <p>
+                        <button type="submit" class="btn btn-success">Add to
+                            cart
+                        </button>
+                    </p>
+
+                </form>
             </div>
         </div>
     </div>
