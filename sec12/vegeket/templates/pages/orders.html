@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1>Orders</h1>
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Created at</th>
+                        <th scope="col">Tax included</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in object_list %}
+                    <tr>
+                        <td><a href="/orders/{{object.pk}}/">{{object.pk}}</a></td>
+                        <td>{{object.created_at|date:"Y-m-d f"}}</td>
+                        <td>¥{{object.tax_included}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
