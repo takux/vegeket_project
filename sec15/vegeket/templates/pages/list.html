@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="row m-5">
+    <div class="col-12 my-3">
+        <h1>{{ title }}</h1>
+    </div>
+    {% for object in object_list %}
+    <div class="col-12 col-lg-3 my-3">
+        {% include 'snippets/item_box.html' %}
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row m-5">
+    <div class="col-12 my-3">
+        {% include 'snippets/pagination.html' %}
+    </div>
+</div>
+
+{% endblock %}
