@@ -3,6 +3,7 @@ from django.views.generic import View, TemplateView
 from django.conf import settings
 from base.models import Item
 import stripe
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 stripe.api_key = settings.STRIPE_API_KEY
 
@@ -16,7 +17,7 @@ tax_rate = stripe.TaxRate.create(
 )
 
 
-class PaySuccessView(TemplateView):
+class PaySuccessView(LoginRequiredMixin, TemplateView):
     template_name = 'pages/success.html'
 
     def get(self, request, *args, **kwargs):
@@ -34,7 +35,7 @@ class PaySuccessView(TemplateView):
         return super().get(request, *args, **kwargs)
 
 
-class PayCancelView(TemplateView):
+class PayCancelView(LoginRequiredMixin, TemplateView):
     template_name = 'pages/cancel.html'
 
     def get(self, request, *args, **kwargs):
@@ -55,9 +56,27 @@ def create_line_item(unit_amount, name, quantity):
     }
 
 
-class PayWithStripe(View):
+def check_profile_filled(profile):
+    if profile.name is None or profile.name == '':
+        return False
+    elif profile.zipcode is None or profile.zipcode == '':
+        return False
+    elif profile.prefecture is None or profile.prefecture == '':
+        return False
+    elif profile.city is None or profile.city == '':
+        return False
+    elif profile.address1 is None or profile.address1 == '':
+        return False
+    return True
+
+
+class PayWithStripe(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
+        # プロフィールが埋まっているかチェック
+        if not check_profile_filled(request.user.profile):
+            return redirect('/profile/')
+
         cart = request.session.get('cart', None)
         if cart is None or len(cart) == 0:
             return redirect('/')
@@ -70,7 +89,7 @@ class PayWithStripe(View):
             line_items.append(line_item)
 
         checkout_session = stripe.checkout.Session.create(
-            # customer_email=request.user.email,
+            customer_email=request.user.email,  # ログインしている現ユーザーのemailを渡す
             payment_method_types=['card'],
             line_items=line_items,
             mode='payment',

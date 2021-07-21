@@ -4,8 +4,11 @@ from django.views.generic import View, ListView
 from base.models import Item
 from collections import OrderedDict
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
-class CartListView(ListView):
+
+class CartListView(LoginRequiredMixin, ListView):
     model = Item
     template_name = 'pages/cart.html'
 
@@ -38,7 +41,7 @@ class CartListView(ListView):
         return context
 
 
-class AddCartView(View):
+class AddCartView(LoginRequiredMixin, View):
     def post(self, request):
         item_pk = request.POST.get('item_pk')
         quantity = int(request.POST.get('quantity'))
@@ -54,6 +57,7 @@ class AddCartView(View):
         return redirect('/cart/')
 
 
+@login_required
 def remove_from_cart(request, pk):
     cart = request.session.get('cart', None)
     if cart is not None:

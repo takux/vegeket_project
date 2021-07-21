@@ -144,3 +144,15 @@ STRIPE_API_KEY = env.str('STRIPE_API_KEY')
 
 # スキーマ＆ドメイン
 MY_URL = env.str('MY_URL')
+
+# --- auth ----
+AUTH_USER_MODEL = 'base.User'
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_URL = '/logout/'
+
+LOGOUT_REDIRECT_URL = '/login/'
+# --- auth ----
