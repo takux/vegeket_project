@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="container ">
+    <div class="row my-5">
+        <div class="col-12">
+            <h2>カート</h2>
+            {% if object_list|length != 0 %}
+            <table class="table mb-5 text-right">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">品名</th>
+                        <th scope="col">単価</th>
+                        <th scope="col">個数</th>
+                        <th scope="col">計</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in object_list %}
+                    <tr>
+                        <td>No.{{forloop.counter}}</td>
+                        <td>{{object.name}}</td>
+                        <td>{{object.price}}</td>
+                        <td>{{object.quantity}}</td>
+                        <td>{{object.subtotal}}</td>
+                        <td><a href="/cart/remove/{{object.pk}}/" class="my-auto btn btn-danger btn-sm">削除</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p class="lead text-right">小計 - ¥{{total}}</p>
+            <p class="lead text-right">税込計 - ¥{{tax_included_total}}</p>
+
+            <!-- Checkoutボタン -->
+            <form action="/pay/checkout/" method="POST" class="text-right">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-info">Checkout</button>
+            </form>
+
+            {% else %}
+            <p class="">ショッピングカートにアイテムがありません。</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

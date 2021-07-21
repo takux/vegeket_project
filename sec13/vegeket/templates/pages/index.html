@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+{% include 'snippets/headline.html' %}
+
+<div class="container px-5" style="max-width:100%">
+
+    <div class="row my-5">
+        {% for object in object_list %}
+        <div class="col-12 col-lg-3 my-3">
+            {% include 'snippets/item_box.html' %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
