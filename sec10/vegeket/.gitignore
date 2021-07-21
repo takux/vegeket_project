@@ -1,0 +1,10 @@
+.DS_Store
+venv/
+secrets/
+config/__pycache__/
+base/models/__pycache__/
+base/migrations/00*.py
+base/migrations/__pycache__/
+base/__pycache__/
+db.sqlite3
+base/views/__pycache__/
