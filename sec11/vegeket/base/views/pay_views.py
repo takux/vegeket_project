@@ -21,13 +21,7 @@ class PaySuccessView(LoginRequiredMixin, TemplateView):
     template_name = 'pages/success.html'
 
     def get(self, request, *args, **kwargs):
-        cart = request.session.get('cart', None)
-
-        # 販売数を更新
-        for item_pk, quantity in cart['items'].items():
-            item = Item.objects.get(pk=item_pk)
-            item.sold_count += quantity
-            item.save()
+        # 最新のOrderオブジェクトを取得し、注文確定に変更
 
         # カート情報削除
         del request.session['cart']
@@ -39,8 +33,12 @@ class PayCancelView(LoginRequiredMixin, TemplateView):
     template_name = 'pages/cancel.html'
 
     def get(self, request, *args, **kwargs):
-        # sessionからcartを削除
-        del request.session['cart']
+        # 最新のOrderオブジェクトを取得
+
+        # 在庫数と販売数を元の状態に戻す
+
+        # is_confirmedがFalseであれば削除（仮オーダー削除）
+
         return super().get(request, *args, **kwargs)
 
 

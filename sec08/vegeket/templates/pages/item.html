@@ -24,7 +24,24 @@
                 <p class="lead">{{object.description}}</p>
 
 
-                <!-- Add to Cartを追記すること -->
+                <form action="/cart/add/" method="POST" class="">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="item_pk" value="{{object.pk}}">
+
+                    <p>
+                        <input type="number" class="form-control d-inline w-25" name="quantity" value="1" value="1"
+                            max="{{object.stock}}"> 点
+                    </p>
+                    <p>
+                        {% if object.stock == 0 %}
+                        <button type="submit" class="btn btn-warning" disabled>売り切れ</button>
+                        {% else %}
+                        <button type="submit" class="btn btn-success">Add to cart</button>
+                        {% endif %}
+                    </p>
+
+                </form>
 
 
             </div>

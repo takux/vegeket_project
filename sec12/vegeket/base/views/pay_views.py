@@ -29,12 +29,6 @@ class PaySuccessView(LoginRequiredMixin, TemplateView):
         order.is_confirmed = True  # 注文確定
         order.save()
 
-        # 販売数を更新
-        for elem in json.loads(order.items):
-            item = Item.objects.get(pk=elem['pk'])
-            item.sold_count += elem['quantity']
-            item.save()
-
         # カート情報削除
         del request.session['cart']
 
@@ -45,10 +39,19 @@ class PayCancelView(LoginRequiredMixin, TemplateView):
     template_name = 'pages/cancel.html'
 
     def get(self, request, *args, **kwargs):
-        # 最新のOrderオブジェクトのis_confirmedがFalseであれば削除
+        # 最新のOrderオブジェクトを取得
         order = Order.objects.order_by('-created_at')[0]
+
+        # 在庫数と販売数を元の状態に戻す
+        for elem in json.loads(order.items):
+            item = Item.objects.get(pk=elem['pk'])
+            item.sold_count -= elem['quantity']
+            item.stock += elem['quantity']
+            item.save()
+
+        # is_confirmedがFalseであれば削除（仮オーダー削除）
         if not order.is_confirmed:
-            order.delete()  # 仮オーダーを削除
+            order.delete()
 
         return super().get(request, *args, **kwargs)
 
@@ -106,6 +109,12 @@ class PayWithStripe(LoginRequiredMixin, View):
                 "price": item.price,
                 "quantity": quantity,
             })
+
+            # 在庫をこの時点で引いておく、注文キャンセルの場合は在庫を戻す
+            # 売上も加算しておく
+            item.stock -= quantity
+            item.sold_count += quantity
+            item.save()
 
         # 仮注文を作成（is_confirmed=False）
         Order.objects.create(
