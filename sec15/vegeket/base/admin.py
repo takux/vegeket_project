@@ -12,7 +12,7 @@ class TagInline(admin.TabularInline):
 
 class ItemAdmin(admin.ModelAdmin):
     inlines = [TagInline]
-    exclude = ('tags',)
+    exclude = ['tags']
 
 
 class ProfileInline(admin.StackedInline):

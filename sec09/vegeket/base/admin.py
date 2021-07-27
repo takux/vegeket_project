@@ -9,7 +9,7 @@ class TagInline(admin.TabularInline):
 
 class ItemAdmin(admin.ModelAdmin):
     inlines = [TagInline]
-    exclude = ('tags',)
+    exclude = ['tags']
 
 
 admin.site.register(Item, ItemAdmin)
