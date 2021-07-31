@@ -17,7 +17,6 @@ class CartListView(LoginRequiredMixin, ListView):
         if cart is None or len(cart) == 0:
             return redirect('/')
         self.queryset = []
-        self.tax_included_total = 0
         self.total = 0
         for item_pk, quantity in cart['items'].items():
             obj = Item.objects.get(pk=item_pk)
