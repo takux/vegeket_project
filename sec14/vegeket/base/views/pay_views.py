@@ -9,7 +9,7 @@ import json
 from django.contrib import messages
 
 
-stripe.api_key = settings.STRIPE_API_KEY
+stripe.api_key = settings.STRIPE_API_SECRET_KEY
 
 tax_rate = stripe.TaxRate.create(
     display_name="消費税",

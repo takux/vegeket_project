@@ -5,7 +5,7 @@ from base.models import Item
 import stripe
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-stripe.api_key = settings.STRIPE_API_KEY
+stripe.api_key = settings.STRIPE_API_SECRET_KEY
 
 tax_rate = stripe.TaxRate.create(
     display_name="消費税",

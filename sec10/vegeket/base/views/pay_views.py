@@ -4,7 +4,7 @@ from django.conf import settings
 from base.models import Item
 import stripe
 
-stripe.api_key = settings.STRIPE_API_KEY
+stripe.api_key = settings.STRIPE_API_SECRET_KEY
 
 tax_rate = stripe.TaxRate.create(
     display_name="消費税",
