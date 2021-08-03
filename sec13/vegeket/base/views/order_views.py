@@ -10,8 +10,7 @@ class OrderIndexView(LoginRequiredMixin, ListView):
     ordering = '-created_at'
 
     def get_queryset(self):
-        self.get_queryset = Order.objects.filter(user=self.request.user)
-        return super().get_queryset()
+        return Order.objects.filter(user=self.request.user)
 
 
 class OrderDetailView(LoginRequiredMixin, DetailView):

@@ -26,7 +26,8 @@ class PaySuccessView(LoginRequiredMixin, TemplateView):
 
     def get(self, request, *args, **kwargs):
         # 最新のOrderオブジェクトを取得し、注文確定に変更
-        order = Order.objects.order_by('-created_at')[0]
+        order = Order.objects.filter(
+            user=request.user).order_by('-created_at')[0]
         order.is_confirmed = True  # 注文確定
         order.save()
 
@@ -41,7 +42,8 @@ class PayCancelView(LoginRequiredMixin, TemplateView):
 
     def get(self, request, *args, **kwargs):
         # 最新のOrderオブジェクトを取得
-        order = Order.objects.order_by('-created_at')[0]
+        order = Order.objects.filter(
+            user=request.user).order_by('-created_at')[0]
 
         # 在庫数と販売数を元の状態に戻す
         for elem in json.loads(order.items):
