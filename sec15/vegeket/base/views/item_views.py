@@ -19,9 +19,8 @@ class CategoryListView(ListView):
 
     def get_queryset(self):
         self.category = Category.objects.get(slug=self.kwargs['pk'])
-        self.queryset = Item.objects.filter(
+        return Item.objects.filter(
             is_published=True, category=self.category)
-        return super().get_queryset()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -36,8 +35,7 @@ class TagListView(ListView):
 
     def get_queryset(self):
         self.tag = Tag.objects.get(slug=self.kwargs['pk'])
-        self.queryset = Item.objects.filter(is_published=True, tags=self.tag)
-        return super().get_queryset()
+        return Item.objects.filter(is_published=True, tags=self.tag)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
