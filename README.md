@@ -73,3 +73,29 @@ vegeket
         ├── messages.html
         └── pagination.html
 ```
+
+## ライブラリ
+
+講座で使用するライブラリは下記になります。
+
+requirements.txt
+```txt
+asgiref==3.4.1
+certifi==2021.5.30
+charset-normalizer==2.0.3
+Django==3.2.5
+django-environ==0.4.5
+idna==3.2
+Pillow==8.3.1
+pytz==2021.1
+requests==2.26.0
+sqlparse==0.4.1
+stripe==2.60.0
+urllib3==1.26.6
+```
+
+必要な方は、下記手順で一括インストールできます。
+
+1. プロジェクト直下に requirements.txt を用意
+2. 仮想環境が有効になっていることを確認
+3. ```pip install -r requirements.txt```で一括インストール 
