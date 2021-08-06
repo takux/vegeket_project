@@ -21,6 +21,8 @@ SECRET_KEY=皆さんそれぞれのシークレットキー
 
 ```
 SECRET_KEY=267rph4&=(3$oj_q7z)=-a#rcx_vjb=wu)f=ht-e=^$k&3zg00
+           ^
+           ここを変更
 ```
 
 Document: https://django-environ.readthedocs.io/en/latest/#proxy-value
