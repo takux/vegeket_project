@@ -2,7 +2,8 @@
 
 ## はじめに
 
-こちらではUdemy講座(【中級者向け】Django発展講座 ~ ECサイト構築でスキルアップするWEBアプリケーション開発 ~)[https://www.udemy.com/course/draft/4166816/?referralCode=47EA4C2DDB607E3500D5] で使用しているソースコードを掲載しています。
+
+こちらではUdemy講座[【中級者向け】Django発展講座 ~ ECサイト構築でスキルアップするWEBアプリケーション開発 ~](https://www.udemy.com/course/draft/4166816/?referralCode=47EA4C2DDB607E3500D5) で使用しているソースコードを掲載しています。
 
 - 各セクション終了時点ごとのソースコードを各 sec フォルダへ掲載しています。必要な箇所にご活用ください。
 
