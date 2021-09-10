@@ -99,7 +99,7 @@ idna==3.2
 Pillow==8.3.2
 pytz==2021.1
 requests==2.26.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 stripe==2.60.0
 urllib3==1.26.6
 ```
