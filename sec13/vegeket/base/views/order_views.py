@@ -17,6 +17,9 @@ class OrderDetailView(LoginRequiredMixin, DetailView):
     model = Order
     template_name = 'pages/order.html'
 
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = self.get_object()
