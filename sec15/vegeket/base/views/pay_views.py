@@ -139,4 +139,5 @@ class PayWithStripe(LoginRequiredMixin, View):
             success_url=f'{settings.MY_URL}/pay/success/',
             cancel_url=f'{settings.MY_URL}/pay/cancel/',
         )
+
         return redirect(checkout_session.url)
