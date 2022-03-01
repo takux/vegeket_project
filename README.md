@@ -84,7 +84,7 @@ vegeket
         └── pagination.html
 ```
 
-## ライブラリ
+## [ライブラリ](#library)
 
 講座で使用するライブラリは下記になります。
 
