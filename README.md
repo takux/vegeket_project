@@ -1,4 +1,4 @@
-# VegeKet
+# VegeKet project
 
 ## はじめに
 
