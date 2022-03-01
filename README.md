@@ -1,9 +1,8 @@
-# VegeKet
+# VegeKet project
 
 ## はじめに
 
-
-こちらではUdemy講座[【中級者向け】Djangoでショッピングサイト開発 - ECサイト構築で行うPython・WEBアプリケーション開発講座](https://www.udemy.com/course/django-ecweb-vegeket/?referralCode=47EA4C2DDB607E3500D5) で使用しているソースコードを掲載しています。
+こちらでは Udemy 講座[【中級者向け】Django でショッピングサイト開発 - EC サイト構築で行う Python・WEB アプリケーション開発講座](https://www.udemy.com/course/django-ecweb-vegeket/?referralCode=47EA4C2DDB607E3500D5) で使用しているソースコードを掲載しています。
 
 - 各セクション終了時点ごとのソースコードを各 sec フォルダへ掲載しています。必要な箇所にご活用ください。
 
@@ -15,7 +14,7 @@
 
 - OS：MacOS
 - シェル：zsh
-- Python：3.9系
+- Python：3.9 系
 - エディター：VSCode
 
 ## 全体構成図/tree
@@ -89,6 +88,7 @@ vegeket
 講座で使用するライブラリは下記になります。
 
 requirements.txt
+
 ```txt
 asgiref==3.4.1
 certifi==2021.5.30
@@ -108,4 +108,4 @@ urllib3==1.26.6
 
 1. プロジェクト直下に requirements.txt を用意
 2. 仮想環境が有効になっていることを確認
-3. ```pip install -r requirements.txt```で一括インストール 
+3. `pip install -r requirements.txt`で一括インストール
