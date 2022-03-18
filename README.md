@@ -96,7 +96,7 @@ charset-normalizer==2.0.3
 Django==3.2.12
 django-environ==0.4.5
 idna==3.2
-Pillow==9.0.0
+Pillow==9.0.1
 pytz==2021.1
 requests==2.26.0
 sqlparse==0.4.2

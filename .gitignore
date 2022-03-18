@@ -2,3 +2,4 @@
 venv/
 secrets/
 flow.md
+.private
