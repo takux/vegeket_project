@@ -2,7 +2,16 @@
 
 ## はじめに
 
-こちらでは Udemy 講座[【中級者向け】Django でショッピングサイト開発 - EC サイト構築で行う Python・WEB アプリケーション開発講座](https://www.udemy.com/course/django-ecweb-vegeket/?referralCode=47EA4C2DDB607E3500D5) で使用しているソースコードを掲載しています。
+こちらでは Udemy講座 で使用しているソースコードを掲載しています。
+
+=> [【中級者向け】Django でショッピングサイト開発 - EC サイト構築で行う Python・WEB アプリケーション開発講座](https://www.udemy.com/course/django-ecweb-vegeket/?referralCode=47EA4C2DDB607E3500D5)
+
+次のリンク他のコースも含め、クーポンも配布しています。
+
+=> [講師HP](https://takuma.one)
+
+
+本リポジトリについて、
 
 - 各セクション終了時点ごとのソースコードを各 sec フォルダへ掲載しています。必要な箇所にご活用ください。
 
