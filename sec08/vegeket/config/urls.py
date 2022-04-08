@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Items
-    path('items/<str:pk>/', views.ItemDetailView.as_view()),  # アイテム詳細ページ
+    path('items/<str:pk>/', views.ItemDetailView.as_view()),
 
-    path('', views.IndexListView.as_view()),  # トップページ
+    path('', views.IndexListView.as_view()),
 ]

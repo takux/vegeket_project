@@ -39,12 +39,12 @@ urlpatterns = [
     # Cart
     path('cart/add/', views.AddCartView.as_view()),
     path('cart/remove/<str:pk>/', views.remove_from_cart),
-    path('cart/', views.CartListView.as_view()),  # カートページ
+    path('cart/', views.CartListView.as_view()),
 
     # Items
-    path('items/<str:pk>/', views.ItemDetailView.as_view()),  # アイテム詳細ページ
+    path('items/<str:pk>/', views.ItemDetailView.as_view()),
     path('categories/<str:pk>/', views.CategoryListView.as_view()),
     path('tags/<str:pk>/', views.TagListView.as_view()),
 
-    path('', views.IndexListView.as_view()),  # トップページ
+    path('', views.IndexListView.as_view()),
 ]

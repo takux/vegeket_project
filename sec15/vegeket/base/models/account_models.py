@@ -78,7 +78,6 @@ class Profile(models.Model):
         return self.name
 
 
-# OneToOneField を同時に作成
 @receiver(post_save, sender=User)
 def create_onetoone(sender, **kwargs):
     if kwargs['created']:

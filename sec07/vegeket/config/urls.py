@@ -20,5 +20,5 @@ from base import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.IndexListView.as_view()),  # トップページ
+    path('', views.IndexListView.as_view()),
 ]
