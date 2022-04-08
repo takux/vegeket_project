@@ -2,14 +2,13 @@
 
 ## はじめに
 
-こちらでは Udemy講座 で使用しているソースコードを掲載しています。
+こちらでは Udemy 講座 で使用しているソースコードを掲載しています。
 
 => [【中級者向け】Django でショッピングサイト開発 - EC サイト構築で行う Python・WEB アプリケーション開発講座](https://www.udemy.com/course/django-ecweb-vegeket/?referralCode=47EA4C2DDB607E3500D5)
 
 次のリンク他のコースも含め、クーポンも配布しています。
 
-=> [講師HP](https://takuma.one)
-
+=> [講師 HP](https://takuma.one)
 
 本リポジトリについて、
 
@@ -99,22 +98,39 @@ vegeket
 requirements.txt
 
 ```txt
-asgiref==3.4.1
-certifi==2021.5.30
-charset-normalizer==2.0.3
+asgiref==3.5.0
+certifi==2021.10.8
+charset-normalizer==2.0.12
 Django==3.2.12
-django-environ==0.4.5
-idna==3.2
-Pillow==9.0.1
-pytz==2021.1
-requests==2.26.0
+django-environ==0.8.1
+idna==3.3
+Pillow==9.1.0
+pytz==2022.1
+requests==2.27.1
 sqlparse==0.4.2
-stripe==2.60.0
-urllib3==1.26.6
+stripe==2.70.0
+urllib3==1.26.9
 ```
 
 必要な方は、下記手順で一括インストールできます。
 
 1. プロジェクト直下に requirements.txt を用意
 2. 仮想環境が有効になっていることを確認
-3. `pip install -r requirements.txt`で一括インストール
+3. `pip install -r requirements.txt` で一括インストール
+
+### 動作確認済み最新バージョンライブラリのインストールする場合
+
+以下の場合 Django4 系になります。
+
+1. 本リポジトリから requirements-latest.txt をダウンロード
+2. プロジェクト直下に requirements-latest.txt を用意
+3. 仮想環境が有効になっていることを確認
+4. `pip install -r requirements-latest.txt` で一括インストール
+
+### 既にインストール済みのライブラリのアップデート
+
+仮想環境が有効になっていることを確認した上で、次のようにしてアップデートできます。
+
+```
+pip install -U <ライブラリ>
+```
