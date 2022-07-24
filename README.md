@@ -95,22 +95,8 @@ vegeket
 
 講座で使用するライブラリは下記になります。
 
-requirements.txt
+[requirements.txt](https://github.com/takux/vegeket_project/blob/main/requirements.txt)
 
-```txt
-asgiref==3.5.0
-certifi==2021.10.8
-charset-normalizer==2.0.12
-Django==3.2.12
-django-environ==0.8.1
-idna==3.3
-Pillow==9.1.0
-pytz==2022.1
-requests==2.27.1
-sqlparse==0.4.2
-stripe==2.70.0
-urllib3==1.26.9
-```
 
 必要な方は、下記手順で一括インストールできます。
 
