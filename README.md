@@ -1,14 +1,12 @@
-# VegeKet project
+# 【中級者向け】Django でショッピングサイト開発 - EC サイト構築で行う Python・WEB アプリケーション開発講座
 
 ## はじめに
 
-こちらでは Udemy 講座 で使用しているソースコードを掲載しています。
+こちらでは Udemy講座 で使用しているソースコードを掲載しています。
 
-=> [【中級者向け】Django でショッピングサイト開発 - EC サイト構築で行う Python・WEB アプリケーション開発講座](https://www.udemy.com/course/django-ecweb-vegeket/?referralCode=47EA4C2DDB607E3500D5)
+<!-- => [【中級者向け】Django でショッピングサイト開発 - EC サイト構築で行う Python・WEB アプリケーション開発講座](https://www.udemy.com/course/django-ecweb-vegeket/?referralCode=47EA4C2DDB607E3500D5)-->
 
-次のリンク他のコースも含め、クーポンも配布しています。
-
-=> [講師 HP](https://takux.one)
+定期的にクーポンを発行しているコース一覧ページは[こちら](https://takux.one)。
 
 本リポジトリについて、
 
