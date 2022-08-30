@@ -98,9 +98,9 @@ vegeket
 
 必要な方は、下記手順で一括インストールできます。
 
-1. プロジェクト直下に requirements.txt を用意
-2. 仮想環境が有効になっていることを確認
-3. `pip install -r requirements.txt` で一括インストール
+1. プロジェクト直下に [requirements.txt](https://github.com/takux/vegeket_project/blob/main/requirements.txt) と同じ中身のファイルを用意します。
+2. 仮想環境が有効になっていることを確認し、
+3. `pip install -r requirements.txt` をターミナルで実行します。
 
 ## 3.2系をインストールする場合
 
