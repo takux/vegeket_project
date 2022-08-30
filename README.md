@@ -102,6 +102,18 @@ vegeket
 2. 仮想環境が有効になっていることを確認
 3. `pip install -r requirements.txt` で一括インストール
 
+## 3.2系をインストールする場合
+
+直接 3.2系をインストールするか、
+```
+pip install --upgrade "Django==3.2.*"
+```
+
+次のrequriementsファイルを使用していただいても構いません。
+```
+pip install --upgrade -r requirements-v3.2.txt
+``` 
+
 
 ### 既にインストール済みのライブラリのアップデート
 
