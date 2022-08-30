@@ -1,4 +1,4 @@
-# 【中級者向け】Django でショッピングサイト開発 - EC サイト構築で行う Python・WEB アプリケーション開発講座
+# 【中級者向け・Django4対応】Python/DjangoによるECサイト開発講座（Django3.2系にも対応）
 
 ## はじめに
 
