@@ -102,14 +102,6 @@ vegeket
 2. 仮想環境が有効になっていることを確認
 3. `pip install -r requirements.txt` で一括インストール
 
-### 動作確認済み最新バージョンライブラリのインストール
-
-以下の場合 Django4 系になります。
-
-1. 本リポジトリから requirements-latest.txt をダウンロード
-2. プロジェクト直下に requirements-latest.txt を用意
-3. 仮想環境が有効になっていることを確認
-4. `pip install -r requirements-latest.txt` で一括インストール
 
 ### 既にインストール済みのライブラリのアップデート
 
