@@ -41,6 +41,11 @@ class CartListView(LoginRequiredMixin, ListView):
 
 
 class AddCartView(LoginRequiredMixin, View):
+
+    # # getメソッドではトップへリダイレクトする場合はこのようにかけます。
+    # def get(self, request):
+    #     return redirect('/')
+
     def post(self, request):
         item_pk = request.POST.get('item_pk')
         quantity = int(request.POST.get('quantity'))
