@@ -49,8 +49,9 @@ class PaySuccessView(LoginRequiredMixin, TemplateView):
         order.is_confirmed = True
         order.save()
 
-        # カート情報削除
-        del request.session['cart']
+        # 🔴 カート情報削除
+        if 'cart' in request.session:
+            del request.session['cart']
 
         return super().get(request, *args, **kwargs)
 
