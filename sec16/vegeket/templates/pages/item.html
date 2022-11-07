@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+  <div class="row my-5">
+    <div class="col-12 col-lg-6">
+      <div class="bg-white border overflow-hidden">
+        <img src="/{{ object.image }}" width="100%">
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="border p-3 text-left text-dark overflow-hidden">
+        <h2 class="display-5">{{object.name}}</h2>
+        <p class="lead">
+          <a href="/categories/{{object.category.slug}}/"
+            class="badge badge-pill badge-warning">{{object.category.name}}</a>
+          {% for tag in object.tags.all %}
+          <a href="/tags/{{tag.slug}}/" class="badge badge-pill badge-light">#{{tag}}</a>
+          {% endfor %}
+        </p>
+        <p class="lead">残り{{object.stock}}個
+        </p>
+        <p class="lead">¥{{object.price}}（税別）</p>
+        <p class="lead">{{object.description}}</p>
+
+        <form action="/cart/add/" method="POST" class="">
+          {% csrf_token %}
+          <input type="hidden" name="item_pk" value="{{object.pk}}">
+          <p>
+            <input type="number" class="form-control d-inline w-25" name="quantity" max="{{object.stock}}"> 点
+          </p>
+          <p>
+            {% if object.stock == 0 %}
+            <button type="submit" class="btn btn-warning" disabled>売り切れ</button>
+            {% else %}
+            <button type="submit" class="btn btn-success">Add to cart</button>
+            {% endif %}
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <h2>おすすめ</h2>
+  <div class="row mb-5">
+    {% for object in ADDTIONAL_ITEMS %}
+    <div class="col-12 col-lg-3 my-3">
+      {% include 'snippets/item_add_box.html' %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
