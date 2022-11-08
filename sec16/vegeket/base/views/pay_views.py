@@ -29,8 +29,7 @@ class PaySuccessView(LoginRequiredMixin, TemplateView):
         order_id = request.GET.get('order_id')
 
         # 🔴 idと現userでOrderオブジェクトのリストを取得
-        orders = Order.objects.filter(user=request.user,
-                                      id=order_id)
+        orders = Order.objects.filter(user=request.user, id=order_id)
 
         # 🔴 もし要素数が1でなければ以降に進まないようにここでreturn
         if len(orders) != 1:
@@ -45,8 +44,7 @@ class PaySuccessView(LoginRequiredMixin, TemplateView):
             # 好みでリダイレクトやメッセージを表示してあげてもいいかもしれません。
             return super().get(request, *args, **kwargs)
 
-        # 注文確定
-        order.is_confirmed = True
+        order.is_confirmed = True  # 注文確定
         order.save()
 
         # 🔴 カート情報削除
@@ -64,8 +62,8 @@ class PayCancelView(LoginRequiredMixin, TemplateView):
         order_id = request.GET.get('order_id')
 
         # 🔴 idと現userでOrderオブジェクトのリストを取得
-        orders = Order.objects.filter(user=request.user,
-                                      id=order_id)
+        orders = Order.objects.filter(user=request.user, id=order_id)
+
         # 🔴 もし要素数が1でなければ以降に進まないようにここでreturn
         if len(orders) != 1:
             # 好みでリダイレクトやメッセージを表示してあげてもいいかもしれません。
@@ -150,8 +148,8 @@ class PayWithStripe(LoginRequiredMixin, View):
             item.sold_count += quantity
             item.save()
 
-        # 仮注文を作成（is_confirmed=False）
-        order = Order.objects.create(  # 🔴 修正ポイント
+        # 🔴 仮注文を作成（is_confirmed=False）
+        order = Order.objects.create(
             user=request.user,
             uid=request.user.pk,
             items=json.dumps(items),
@@ -161,8 +159,7 @@ class PayWithStripe(LoginRequiredMixin, View):
         )
 
         checkout_session = stripe.checkout.Session.create(
-            # ログインしている現ユーザーのemailを渡す
-            customer_email=request.user.email,
+            customer_email=request.user.email,  # ログインしている現ユーザーのemailを渡す
             payment_method_types=['card'],
             line_items=line_items,
             mode='payment',
