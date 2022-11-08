@@ -10,7 +10,7 @@
 
 ## 仮想環境
 
-＊Windowsの方は下記を参考にして仮想環境を構築してください（講座はMacで作業をしています）。
+＊Windowsの方は下記または[こちらの記事](https://www.rabbitriver.page/ja/windows-venv/)を参考にして仮想環境を構築してください（講座はMacで作業をしています）。
 
 ### Windowsでの仮想環境の構築
 powershell
