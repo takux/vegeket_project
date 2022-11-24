@@ -58,30 +58,18 @@ class PayCancelView(LoginRequiredMixin, TemplateView):
     template_name = 'pages/cancel.html'
 
     def get(self, request, *args, **kwargs):
-        # checkout_sessionで渡したクエリを取得
-        order_id = request.GET.get('order_id')
+        # 現userの仮Orderオブジェクトのリストを取得
+        orders = Order.objects.filter(user=request.user, is_confirmed=False)
 
-        # idと現userでOrderオブジェクトのリストを取得
-        orders = Order.objects.filter(user=request.user, id=order_id)
-
-        # もし要素数が1でなければ以降に進まないようにここでreturn
-        if len(orders) != 1:
-            # 好みでリダイレクトやメッセージを表示してあげてもいいかもしれません。
-            return super().get(request, *args, **kwargs)
-
-        # １つの要素を変数へ代入
-        order = orders[0]
-
-        # 在庫数と販売数を元の状態に戻す
-        for elem in json.loads(order.items):
-            item = Item.objects.get(pk=elem['pk'])
-            item.sold_count -= elem['quantity']
-            item.stock += elem['quantity']
-            item.save()
-
-        # is_confirmedがFalseであれば削除（仮オーダー削除）
-        if not order.is_confirmed:
-            order.delete()
+        for order in orders:
+            # 在庫数と販売数を元の状態に戻す
+            for elem in json.loads(order.items):
+                item = Item.objects.get(pk=elem['pk'])
+                item.sold_count -= elem['quantity']
+                item.stock += elem['quantity']
+                item.save()
+        # 仮オーダーを全て削除
+        orders.delete()
 
         return super().get(request, *args, **kwargs)
 
@@ -163,9 +151,9 @@ class PayWithStripe(LoginRequiredMixin, View):
             payment_method_types=['card'],
             line_items=line_items,
             mode='payment',
-            # success_urlとcancel_urlには、クエリで注文IDを渡しておく
+            # success_urlには、クエリで注文IDを渡しておく
             success_url=f'{settings.MY_URL}/pay/success/?order_id={order.pk}',
-            cancel_url=f'{settings.MY_URL}/pay/cancel/?order_id={order.pk}',
+            cancel_url=f'{settings.MY_URL}/pay/cancel/',
         )
 
         return redirect(checkout_session.url)
