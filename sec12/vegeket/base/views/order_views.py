@@ -7,10 +7,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class OrderIndexView(LoginRequiredMixin, ListView):
     model = Order
     template_name = 'pages/orders.html'
-    ordering = '-created_at'
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user)
+        return Order.objects.filter(user=self.request.user).order_by('-created_at')
 
 
 class OrderDetailView(LoginRequiredMixin, DetailView):
