@@ -5,6 +5,9 @@ from base.models import Item, Tag, Category, User, Profile, Order
 from django.contrib.auth.admin import UserAdmin
 from base.forms import UserCreationForm
 
+from django import forms
+import json
+
 
 class TagInline(admin.TabularInline):
     model = Item.tags.through
@@ -41,7 +44,22 @@ class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline,)
 
 
-admin.site.register(Order)
+class CustomJsonField(forms.JSONField):
+    def prepare_value(self, value):
+        loaded = json.loads(value)
+        return json.dumps(loaded, indent=2, ensure_ascii=False)
+
+
+class OrderAdminForm(forms.ModelForm):
+    items = CustomJsonField()
+    shipping = CustomJsonField()
+
+
+class OrderAdmin(admin.ModelAdmin):
+    form = OrderAdminForm
+
+
+admin.site.register(Order, OrderAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category)
 admin.site.register(Tag)
